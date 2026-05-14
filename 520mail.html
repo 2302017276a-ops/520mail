@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>给ta的一份惊喜</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="app" aria-live="polite">
+      <section class="intro" id="intro">
+        <div class="ambient ambient--one"></div>
+        <div class="ambient ambient--two"></div>
+        <div class="ambient ambient--three"></div>
+
+        <form class="wish-card" id="wishForm">
+          <p class="eyebrow">把温柔做成一份会动的礼物</p>
+          <h1>写给在意的 ta</h1>
+
+          <label class="field">
+            <span>你的称呼</span>
+            <input
+              id="senderName"
+              name="senderName"
+              type="text"
+              maxlength="16"
+              autocomplete="off"
+              placeholder="比如：阿澈、林林、我"
+            />
+          </label>
+
+          <label class="field">
+            <span>ta 的称呼</span>
+            <input
+              id="recipientName"
+              name="recipientName"
+              type="text"
+              maxlength="16"
+              autocomplete="off"
+              placeholder="比如：阿宁、小宇、宝贝"
+            />
+          </label>
+
+          <label class="field">
+            <span>你想给 ta 的祝福</span>
+            <textarea
+              id="blessingText"
+              name="blessingText"
+              maxlength="88"
+              rows="3"
+              placeholder="可用分号分句，例如：暴富；顺顺利利；天天开心（也可以空着）"
+            ></textarea>
+          </label>
+
+          <button class="primary-button" type="submit">预览祝福动画</button>
+        </form>
+      </section>
+
+      <section class="gift" id="gift" aria-hidden="true">
+        <div class="gift__halo"></div>
+        <button class="envelope" id="envelope" type="button" aria-label="打开惊喜信封">
+          <span class="envelope__back"></span>
+          <span class="envelope__paper">
+            <span id="giftLine">一份惊喜正在靠近</span>
+          </span>
+          <span class="envelope__front"></span>
+          <span class="envelope__flap"></span>
+          <span class="envelope__seal">❤</span>
+        </button>
+        <p class="gift__hint" id="giftHint">点击打开信封</p>
+      </section>
+
+      <section class="stage" id="stage" aria-hidden="true">
+        <audio id="bgMusic" src="love-remix.mp3" preload="auto"></audio>
+        <div class="aurora"></div>
+        <div class="spark-layer" id="sparkLayer"></div>
+        <div class="text-layer" id="textLayer"></div>
+
+        <div class="final-message" id="finalMessage">
+          <p id="finalRecipient"></p>
+          <h2 id="finalBlessing"></h2>
+          <p class="signature" id="finalSender"></p>
+
+          <div class="preview-actions" id="previewActions">
+            <button class="secondary-button" id="replayButton" type="button">重新预览</button>
+            <button class="primary-button primary-button--compact" id="copyLinkButton" type="button">
+              生成发送链接
+            </button>
+          </div>
+
+          <div class="product-actions" id="productActions" aria-label="成品操作">
+            <button class="product-action-button" id="saveImageButton" type="button">保存到图片</button>
+            <button class="product-action-button product-action-button--primary" id="forwardMomentButton" type="button">
+              转发到朋友圈
+            </button>
+            <button class="product-action-button product-action-button--quiet" id="madeWithButton" type="button">
+              Madewith❤
+            </button>
+          </div>
+        </div>
+
+        <div class="toast" id="toast" role="status">图片已准备好</div>
+        <div class="link-panel" id="linkPanel" aria-hidden="true">
+          <div class="link-panel__box">
+            <p>长按复制这条发送链接</p>
+            <textarea id="shareLinkText" readonly rows="4"></textarea>
+            <button class="secondary-button" id="closeLinkPanel" type="button">关闭</button>
+          </div>
+        </div>
+
+        <div class="modal-panel" id="momentPanel" aria-hidden="true">
+          <div class="modal-panel__box">
+            <button class="modal-panel__close" type="button" data-modal-close aria-label="关闭">×</button>
+            <p class="modal-panel__title">转发到朋友圈</p>
+            <p class="modal-panel__text" id="momentHelpText">
+              链接已复制。可以在微信右上角分享，也可以先保存图片后发朋友圈。
+            </p>
+            <button class="secondary-button" type="button" data-modal-close>知道了</button>
+          </div>
+        </div>
+
+        <div class="modal-panel" id="madeWithPanel" aria-hidden="true">
+          <div class="modal-panel__box">
+            <button class="modal-panel__close" type="button" data-modal-close aria-label="关闭">×</button>
+            <p class="modal-panel__text modal-panel__text--made">
+              ❤喜欢这个惊喜吗？<br />
+              如果你也想做一个专属的，欢迎找我帮忙<br />
+              dy：wustarcjc
+            </p>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <script src="script.js"></script>
+  </body>
+</html>
